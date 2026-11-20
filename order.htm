@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swiggy</title>
+    <link rel="icon" href="icon.webp">
+</head>
+<style>
+    #form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    /* Fields */
+    input{
+        flex: 1 1 200px;
+    }
+
+    /* Address full width */
+    textarea{
+        flex: 1 1 100%;
+    }
+
+    /* Inputs */
+    input,
+    textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Button */
+    button {
+        flex: 1 1 100%;
+        padding: 10px;
+        background: orange;
+        color: white;
+        border: none;
+    }
+
+    
+</style>
+
+<body>
+    <h2>order your food</h2>
+    <form id="form">
+        <label>Name:</label><br>
+        <input type="text" placeholder="enter your name" name="name"><br><br>
+        <label>phone:</label><br>
+        <input type="number" placeholder="enter your number" name="phone"><br><br>
+        <label>Address:</label><br>
+        <textarea placeholder="enter your delivery location" name="address" ></textarea><br><br>
+        <button>place order</button>
+
+    </form>
+    <script>
+        let form=document.getElementById("form");
+            form.addEventListener("submit" , function(e) {
+                e.preventDefault();
+                let formData=new FormData(form);
+                let name=formData.get("name");
+                let phone=formData.get("phone");
+                let address=formData.get("address");
+                    if (name===""&& phone===""&&address===""){
+                        alert("fill all the details");
+                        return;
+                    }
+                    if (name===""){
+                        alert("name is required");
+                        return;
+                    }
+                    if (phone===""){
+                        alert("phone number is required");
+                        return;
+                    }
+                    if (address===""){
+                        alert("address required");
+                        return;
+                    }
+                    alert("ordered successfully");
+                    form.reset();
+                
+            });
+    </script>
+    </script>
+</body>
+
+</html>
